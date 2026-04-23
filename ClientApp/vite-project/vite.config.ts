@@ -13,6 +13,28 @@ export default defineConfig({
       key: fs.readFileSync(path.resolve(__dirname, "certs/localhost-key.pem")),
       cert: fs.readFileSync(path.resolve(__dirname, "certs/localhost.pem")),
     },
+    // Proxy API calls to Optimizely backend
+    proxy: {
+      '/dashboard-api': {
+        target: 'https://localhost:5000',
+        changeOrigin: true,
+        secure: false, // Allow self-signed certs in dev
+        rejectUnauthorized: false,
+      },
+      '/api': {
+        target: 'https://localhost:5000',
+        changeOrigin: true,
+        secure: false,
+        rejectUnauthorized: false,
+      },
+      '/hubs': {
+        target: 'https://localhost:5000',
+        changeOrigin: true,
+        secure: false,
+        rejectUnauthorized: false,
+        ws: true, // Enable WebSocket for SignalR
+      },
+    },
   },
 
   html: {

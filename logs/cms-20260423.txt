@@ -1,3 +1,36 @@
 2026-04-23 09:29:52.877 +02:00 [INF] Application is shutting down...
 2026-04-23 09:29:52.893 +02:00 [INF] Uninitialization started
 2026-04-23 09:29:52.933 +02:00 [INF] Uninitialization completed
+2026-04-23 10:22:13.392 +02:00 [INF] User profile is available. Using 'C:\Users\Nuha\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-23 10:22:13.488 +02:00 [INF] Initialization started
+2026-04-23 10:22:13.928 +02:00 [WRN] Database connection is configured to allow MultipleActiveResultSets. Consider disable MultipleActiveResultSets for better performance.
+2026-04-23 10:22:13.938 +02:00 [INF] No event providers has been configured. Events will not be distributed to other servers.
+2026-04-23 10:22:14.233 +02:00 [INF] Adding module CMS
+2026-04-23 10:22:14.236 +02:00 [INF] Adding module Shell
+2026-04-23 10:22:14.237 +02:00 [INF] Adding module EPiServer.Cms.UI.VisitorGroups
+2026-04-23 10:22:14.237 +02:00 [INF] Adding module EPiServer.Cms.UI.Admin
+2026-04-23 10:22:14.238 +02:00 [INF] Adding module EPiServer.Cms.UI.Settings
+2026-04-23 10:22:14.239 +02:00 [INF] Adding module EPiServer.Cms.TinyMce
+2026-04-23 10:22:14.239 +02:00 [INF] Adding module App
+2026-04-23 10:22:14.269 +02:00 [INF] Resolving Json serializer for Module 'EPiServer.Cms.UI.VisitorGroups' with setting 'ModuleJsonSerializerType=Net' and 'PreferredUiJsonSerializerType=Net'
+2026-04-23 10:22:14.272 +02:00 [INF] Resolving Json serializer for Module 'EPiServer.Cms.UI.Admin' with setting 'ModuleJsonSerializerType=None' and 'PreferredUiJsonSerializerType=Net'
+2026-04-23 10:22:14.273 +02:00 [INF] Resolving Json serializer for Module 'EPiServer.Cms.UI.Settings' with setting 'ModuleJsonSerializerType=Net' and 'PreferredUiJsonSerializerType=Net'
+2026-04-23 10:22:14.274 +02:00 [INF] Resolving Json serializer for Module 'EPiServer.Cms.TinyMce' with setting 'ModuleJsonSerializerType=Resolve' and 'PreferredUiJsonSerializerType=Resolve'
+2026-04-23 10:22:14.275 +02:00 [INF] Resolved System.Text.Json serializer for Module 'EPiServer.Cms.TinyMce' according to global formatter
+2026-04-23 10:22:14.275 +02:00 [INF] Resolving Json serializer for Module 'App' with setting 'ModuleJsonSerializerType=Resolve' and 'PreferredUiJsonSerializerType=Resolve'
+2026-04-23 10:22:14.277 +02:00 [INF] Resolved System.Text.Json serializer for Module 'App' according to global formatter
+2026-04-23 10:22:14.279 +02:00 [INF] Resolved System.Text.Json as serializer for CMS UI
+2026-04-23 10:22:14.595 +02:00 [INF] Initialization completed
+2026-04-23 10:22:15.044 +02:00 [INF] Now listening on: https://localhost:5000
+2026-04-23 10:22:15.047 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-23 10:22:15.049 +02:00 [INF] Hosting environment: Development
+2026-04-23 10:22:15.051 +02:00 [INF] Content root path: C:\Users\Nuha\Documents\optimizely
+2026-04-23 10:22:57.895 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5000/api/content/projects-page - null null
+2026-04-23 10:22:57.909 +02:00 [INF] First request initialization started for request 'https://localhost:5000/api/content/projects-page'
+2026-04-23 10:22:57.926 +02:00 [INF] First request initialization completed for request 'https://localhost:5000/api/content/projects-page'
+2026-04-23 10:22:58.028 +02:00 [INF] Executing endpoint 'test.Cms12.Controllers.Api.ContentApiController.GetProjectsPageAsync (test.Cms12)'
+2026-04-23 10:22:58.045 +02:00 [INF] Route matched with {action = "GetProjectsPage", controller = "ContentApi"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[test.Cms12.Controllers.Api.ProjectsPageDto]] GetProjectsPageAsync() on controller test.Cms12.Controllers.Api.ContentApiController (test.Cms12).
+2026-04-23 10:22:58.157 +02:00 [INF] Executing NotFoundObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2026-04-23 10:22:58.201 +02:00 [INF] Executed action test.Cms12.Controllers.Api.ContentApiController.GetProjectsPageAsync (test.Cms12) in 148.1125ms
+2026-04-23 10:22:58.208 +02:00 [INF] Executed endpoint 'test.Cms12.Controllers.Api.ContentApiController.GetProjectsPageAsync (test.Cms12)'
+2026-04-23 10:22:58.211 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5000/api/content/projects-page - 404 null application/json; charset=utf-8 316.5616ms
