@@ -1,0 +1,85 @@
+@model test.Cms12.Models.Pages.ProjectDashboardPage
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Web.Routing
+@inject UrlResolver UrlResolver
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    ViewData["Title"] = !string.IsNullOrWhiteSpace(Model.MetaTitle)
+        ? Model.MetaTitle
+        : Model.Heading ?? "Project Dashboard";
+    
+    if (!string.IsNullOrWhiteSpace(Model.MetaDescription))
+    {
+        ViewData["Description"] = Model.MetaDescription;
+    }
+
+    var projectsUrl = Model.ProjectsPage != null
+        ? UrlResolver.GetUrl(Model.ProjectsPage)
+        : "/";
+}
+
+<div class="wrap">
+    <div class="pageHeader">
+        <div class="pageHeaderLeft">
+            <div id="dashboard-title"></div>
+
+            @if (Model.Instructions != null)
+            {
+                <div class="sub">@Html.PropertyFor(x => x.Instructions)</div>
+            }
+        </div>
+
+        <div class="pageHeaderRight">
+            <div id="dashboard-actions"></div>
+        </div>
+    </div>
+
+    @if (Model.SidebarContent != null)
+    {
+        <div class="cms-sidebar-content" style="margin-bottom:16px;">
+            @Html.PropertyFor(x => x.SidebarContent)
+        </div>
+    }
+
+    <div id="reactBootLoader" class="pill"></div>
+    <div id="root"></div>
+</div>
+
+<meta name="app-page" content="dashboard" />
+<meta name="projects-url" content="@projectsUrl" />
+
+<meta name="col-title-todo" content="To do" />
+<meta name="col-title-inprogress" content="In progress" />
+<meta name="col-title-done" content="Done" />
+<meta name="board-add-button-text" content="Add" />
+
+<meta name="all-projects-button-text" content="All Projects" />
+<meta name="share-button-text" content="Share" />
+<meta name="signout-button-text" content="Sign out" />
+
+<meta name="share-dialog-title" content="Share project" />
+<meta name="share-dialog-email-label" content="User email" />
+<meta name="share-dialog-email-placeholder" content="name@company.com" />
+<meta name="share-dialog-role-label" content="Role" />
+<meta name="owner-label" content="Owner" />
+<meta name="member-label" content="Member" />
+<meta name="share-dialog-close-button-text" content="Close" />
+<meta name="share-dialog-submit-button-text" content="Share" />
+<meta name="share-success-text" content="User added to project successfully." />
+<meta name="user-already-has-access-text" content="User already has access." />
+
+<meta name="create-task-title" content="Create task" />
+<meta name="edit-task-title" content="Edit task" />
+<meta name="task-title-label" content="Title" />
+<meta name="task-description-label" content="Description" />
+<meta name="assignees-label" content="Assignees" />
+<meta name="no-assignees-text" content="No assignees yet" />
+<meta name="assignee-search-placeholder" content="Type email" />
+<meta name="remove-assignee-title" content="Remove" />
+<meta name="task-cancel-button-text" content="Cancel" />
+<meta name="task-save-button-text" content="Save" />
+<meta name="task-delete-button-text" content="Delete" />
+<meta name="task-title-required-error" content="Title is required." />
+<meta name="task-members-load-error" content="Failed to load members" />

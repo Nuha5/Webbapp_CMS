@@ -1,0 +1,17 @@
+@using test.Cms12.Models.Pages
+@using test.Cms12.Models.Blocks
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@model BasePage
+@inject EPiServer.IContentLoader ContentLoader
+
+@if (Model?.TopAlerts != null && Model.TopAlerts.Count > 0)
+{
+    @foreach (var item in Model.TopAlerts.Items)
+    {
+        if (item?.ContentLink != null && ContentLoader.TryGet<TopAlertBlock>(item.ContentLink, out var block))
+        {
+            <partial name="~/Views/Shared/Blocks/TopAlertBlock.cshtml" model="block" />
+        }
+    }
+}

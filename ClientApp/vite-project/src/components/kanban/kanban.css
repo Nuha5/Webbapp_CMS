@@ -1,0 +1,536 @@
+/* =========================
+   THEME TOKENS
+   ========================= */
+
+/* Default DARK */
+:root {
+  /* typography */
+  --font: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  /* colors */
+  --bg: #0b1220;
+
+  --panel: rgba(255, 255, 255, 0.06);
+  --panel-2: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.10);
+
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.65);
+
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --radius: 14px;
+
+  /* toggle */
+  --toggle-track: rgba(255, 255, 255, 0.10);
+  --toggle-track-2: rgba(255, 255, 255, 0.18);
+  --toggle-knob: rgba(255, 255, 255, 0.92);
+
+  /* alert colors - dark mode */
+  --alert-warning-bg: #b73333;
+  --alert-warning-color: #f8d7da;
+  --alert-warning-border: #d66666;
+
+  --alert-info-bg: #6b3fa0;
+  --alert-info-color: #e6d5f5;
+  --alert-info-border: #8b5fbf;
+
+  --alert-news-bg: #2d5016;
+  --alert-news-color: #d4edda;
+  --alert-news-border: #4a7a24;
+}
+
+/* LIGHT */
+:root[data-theme="light"] {
+  --bg: #f5f5f5f5;
+
+  --panel: rgba(0, 0, 0, 0.05);
+  --panel-2: rgba(0, 0, 0, 0.08);
+  --border: rgba(0, 0, 0, 0.15);
+
+  --text: rgba(0, 0, 0, 0.88);
+  --muted: rgba(0, 0, 0, 0.62);
+
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+  --toggle-track: rgba(0, 0, 0, 0.10);
+  --toggle-track-2: rgba(0, 0, 0, 0.16);
+  --toggle-knob: #f5f5f5;
+
+  /* alert colors - light mode */
+  --alert-warning-bg: #f8d7da;
+  --alert-warning-color: #721c24;
+  --alert-warning-border: #f5c6cb;
+
+  --alert-info-bg: #e6d5f5;
+  --alert-info-color: #4a1f73;
+  --alert-info-border: #d9b8ea;
+
+  --alert-news-bg: #d4edda;
+  --alert-news-color: #155724;
+  --alert-news-border: #c3e6cb;
+}
+
+/* =========================
+   BASE / LAYOUT
+   ========================= */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  color: inherit;
+}
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 44px 18px 40px;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.pageHeaderLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pageHeaderRight {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  align-items: center;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.sub {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.pill {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+
+/* =========================
+   BOARD / COLUMNS
+   ========================= */
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(280px, 340px));
+  gap: 14px;
+
+  height: calc(100vh - 220px);
+  /* 100% av höjden på fönstret (viewport height), minus 220 pixlar för allt annat på sidan (heading, paddding, knappar m.m) */
+  min-height: 0;
+
+  justify-content: center;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .board {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+}
+
+.col {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  min-height: 0;
+  /* viktigt för overflow i barn */
+}
+
+.colHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.colBody {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* Scrollbar (fixad: colBody, inte colbody) */
+.colBody::-webkit-scrollbar {
+  width: 10px;
+}
+
+.colBody::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+
+.colBody::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+:root[data-theme="light"] .colBody::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18);
+}
+
+/* =========================
+   CARDS
+   ========================= */
+
+.card {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+}
+
+.cardTitle {
+  font-weight: 800;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.cardDesc {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+/* =========================
+   MODALS / FORMS
+   ========================= */
+
+.error {
+  padding: 12px 12px;
+  border: 1px solid rgba(255, 99, 99, 0.45);
+  border-radius: 12px;
+  margin-bottom: 14px;
+  background: rgba(255, 99, 99, 0.10);
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+/* Edit/Create modal */
+.modal {
+  width: min(560px, 100%);
+  background: #111827;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+
+:root[data-theme="light"] .modal {
+  background: #f9fafb;
+}
+
+.modal h3 {
+  margin: 0 0 12px;
+}
+
+.row {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+label {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.input,
+.textarea,
+.select {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 9px 10px;
+  outline: none;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  border-color: rgba(37, 99, 235, 0.8);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.select option {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+
+.primary {
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 10px;
+  padding: 9px 12px;
+  cursor: pointer;
+  font-weight: 800;
+  transition: transform 0.12s ease, filter 0.12s ease;
+}
+
+.primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.secondary {
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 9px 12px;
+  cursor: pointer;
+  font-weight: 800;
+  transition: transform 0.12s ease, filter 0.12s ease;
+}
+
+.secondary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.danger {
+  border: none;
+  background: #dc2626;
+  color: white;
+  border-radius: 10px;
+  padding: 9px 12px;
+  cursor: pointer;
+  font-weight: 800;
+  transition: transform 0.12s ease, filter 0.12s ease;
+}
+
+.danger:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.btn {
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 7px 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  transition: transform 0.12s ease, filter 0.12s ease;
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* =========================
+   THEME TOGGLE
+   ========================= */
+
+.themeToggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+
+  border-radius: 14px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.themeToggleTrack {
+  width: 34px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--toggle-track);
+  position: relative;
+  border: 1px solid var(--border);
+}
+
+.themeToggleTrack:hover {
+  background: var(--toggle-track-2);
+}
+
+.themeToggleThumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--toggle-knob);
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  transition: transform 160ms ease;
+}
+
+.themeToggleTrack.isLight .themeToggleThumb {
+  transform: translateX(16px);
+}
+
+.themeToggleText {
+  color: var(--muted);
+}
+
+/* Dashboard actions: desktop two rows */
+.dashActions {
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+}
+
+.dashActionsRow {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.dashSignoutForm {
+  margin: 0;
+}
+
+/* Mobile: ALL buttons in ONE row (scrollable) */
+@media (max-width: 600px) {
+  .dashActions {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    padding-bottom: 6px;
+    width: 100%;
+  }
+
+  /* slopa raderna på mobil, låt knapparna ligga i samma flex-rad */
+  .dashActionsRow {
+    display: contents;
+  }
+
+  .dashActions button,
+  .dashActions form {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+}
+
+/* Mobile left header align (prevents "zoomed out" look) */
+@media (max-width: 600px) {
+  .pageHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pageHeaderLeft,
+  .pageHeaderRight {
+    width: 100%;
+  }
+
+  .pageHeaderRight {
+    justify-content: flex-start;
+    /* actions start at left */
+    margin-top: 10px;
+    /* actions under intro text */
+  }
+
+  /* Dashboard actions (your buttons) should align left on mobile */
+  .dashActions {
+    justify-content: flex-start;
+  }
+
+  .card {
+    touch-action: none;
+    /* important for drag on mobile - prevents weird "ghost" dragging and scrolling at the same time */
+  }
+
+
+}

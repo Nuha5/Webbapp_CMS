@@ -1,0 +1,63 @@
+@model test.Cms12.Models.Pages.ProjectsPage
+@using EPiServer.Web.Mvc.Html
+@using EPiServer.Web.Routing
+@using test.Cms12.Models.Pages
+@inject UrlResolver UrlResolver
+@inject EPiServer.IContentLoader ContentLoader
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    ViewData["Title"] = !string.IsNullOrWhiteSpace(Model.MetaTitle)
+        ? Model.MetaTitle
+        : Model.Heading ?? "Projects";
+    
+    if (!string.IsNullOrWhiteSpace(Model.MetaDescription))
+    {
+        ViewData["Description"] = Model.MetaDescription;
+    }
+
+    var dashboardUrl = Model.ProjectDashboardPage != null
+        ? UrlResolver.GetUrl(Model.ProjectDashboardPage)
+        : "";
+
+    var projectsUrl = UrlResolver.GetUrl(Model.ContentLink);
+}
+<div class="wrap">
+    <div class="pageHeader">
+        <div class="pageHeaderLeft">
+            <h1 class="title">@Html.PropertyFor(x => x.Heading)</h1>
+
+            @if (Model.IntroText != null)
+            {
+                <div class="sub">@Html.PropertyFor(x => x.IntroText)</div>
+            }
+        </div>
+
+        <div id="header-actions" class="pageHeaderRight"></div>
+    </div>
+
+    @if (Model.TopContent != null)
+    {
+        <div class="cms-top-content" style="margin-bottom:16px;">
+            @Html.PropertyFor(x => x.TopContent)
+        </div>
+    }
+
+    <div id="reactBootLoader" class="pill"></div>
+    <div id="root"></div>
+</div>
+
+<meta name="app-page" content="projects-page" />
+<meta name="dashboard-url" content="@dashboardUrl" />
+<meta name="projects-url" content="@projectsUrl" />
+
+<meta name="create-project-placeholder" content="New project name…" />
+<meta name="create-project-button-text" content="Create" />
+<meta name="no-projects-text" content="No projects yet" />
+<meta name="resolved-label" content="Resolved" />
+<meta name="delete-project-confirmation-text" content="Are you sure you want to delete this project?" />
+<meta name="delete-button-text" content="Delete" />
+<meta name="cancel-button-text" content="Cancel" />
+<meta name="confirm-delete-button-text" content="Yes" />
+<meta name="signout-button-text" content="Sign out" />

@@ -1,0 +1,28 @@
+@using test.Cms12.Models.Blocks
+@model TopAlertBlock
+
+@{
+    if (Model != null)
+    {
+        var today = DateTime.Now.Date;
+        var showFromDate = Model.ShowFromDate.Date;
+        var showToDate = Model.ShowToDate.Date;
+        var isEnabled = Model.IsEnabled;
+        var isVisible = isEnabled && today >= showFromDate && today <= showToDate;
+        
+        var alertTypeClass = Model.AlertType.ToString().ToLower();
+        var alertBlockId = "alert-" + System.Guid.NewGuid().ToString().Substring(0, 8);
+        
+        if (isVisible)
+        {
+            <div id="@alertBlockId" class="top-alert-banner alert-@alertTypeClass" role="alert">
+                <div class="top-alert-content">
+                    <span class="alert-message">@Html.Raw(Model.Message)</span>
+                    <button class="alert-close-btn" aria-label="Close alert" data-alert-id="@alertBlockId" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        }
+    }
+}

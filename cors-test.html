@@ -1,0 +1,31 @@
+<!--
+CORS-TEST: Testsida för att validera CORS-säkerhet
+Testet gör ett API-anrop från en otillåten origin (file://) med korrekt API-nyckel (X-API-Key: test).
+Trots att API-nyckeln är giltig blockeras anropet av CORS-policyn eftersom ursprunget inte är i 
+whitelist-domänerna (endast https://localhost:3000 är tillåten för utveckling). Testet verifierar 
+att säkerhetskontroller fungerar korrekt: API-autentisering valideras INTE om CORS-kontrollen 
+misslyckas först. Detta säkerställer att obehöriga origins inte kan få tillgång till API-resurser 
+oavsett om de har en giltig API-nyckel.
+-->
+<!doctype html>
+<html>
+<body>
+  <button id="btn">Testa API</button>
+  <pre id="out"></pre>
+
+  <script>
+    document.getElementById("btn").onclick = async () => {
+      try {
+        const res = await fetch("https://localhost:7296/api/tasks", {
+          headers: { "X-API-Key": "test" }
+        });
+        document.getElementById("out").textContent = await res.text();
+      } catch (e) {
+        document.getElementById("out").textContent = String(e);
+        console.error(e);
+      }
+    };
+  </script>
+</body>
+</html>
+

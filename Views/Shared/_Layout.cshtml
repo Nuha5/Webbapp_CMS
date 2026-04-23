@@ -1,0 +1,128 @@
+@using System.Text.Json
+@using System.Linq
+@using Microsoft.AspNetCore.Antiforgery
+@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+@using test.Cms12.Security
+@using test.Cms12.Models.Blocks
+@using test.Cms12.Models.Pages
+@inject IAntiforgery Antiforgery
+@inject IWebHostEnvironment Env
+@inject EPiServer.IContentLoader ContentLoader
+
+@{
+    var tokens = Antiforgery.GetAndStoreTokens(Context);
+    var nonce = (Context.Items[ContentSecurityPolicyMiddleware.NonceItemKey] as string) ?? "";
+
+    string? jsFile = null;
+    string? cssFile = null;
+
+    if (!Env.IsDevelopment())
+    {
+        var manifestPath = System.IO.Path.Combine(Env.WebRootPath, "client", "manifest.json");
+        if (System.IO.File.Exists(manifestPath))
+        {
+            var json = System.IO.File.ReadAllText(manifestPath);
+            using var doc = JsonDocument.Parse(json);
+
+            if (doc.RootElement.TryGetProperty("index.html", out var entry))
+            {
+                if (entry.TryGetProperty("file", out var fileProp))
+                {
+                    jsFile = fileProp.GetString();
+                }
+
+                if (entry.TryGetProperty("css", out var cssArr) &&
+                    cssArr.ValueKind == JsonValueKind.Array &&
+                    cssArr.GetArrayLength() > 0)
+                {
+                    cssFile = cssArr[0].GetString();
+                }
+            }
+        }
+    }
+}
+
+<!doctype html>
+<html lang="sv" data-react-ready="0">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"]</title>
+
+    @if (!string.IsNullOrWhiteSpace(ViewData["Description"]?.ToString()))
+    {
+        <meta name="description" content="@ViewData["Description"]" />
+    }
+
+    <meta name="csrf-token" content="@tokens.RequestToken" />
+
+    @* Viktigt för Vite CSP nonce-stöd *@
+    <meta property="csp-nonce" nonce="@nonce" />
+
+    @* Tillåten via style-src 'nonce-...' *@
+    <style nonce="@nonce">
+            html[data-react-ready="0"] .pageHeader {
+                display: none !important;
+            }
+
+            html[data-react-ready="0"] #reactBootLoader {
+                display: block !important;
+            }
+
+            html[data-react-ready="1"] #reactBootLoader {
+                display: none !important;
+            }
+    </style>
+
+    @if (!Env.IsDevelopment() && !string.IsNullOrWhiteSpace(cssFile))
+    {
+        <link rel="stylesheet" href="@($"/client/{cssFile}")" />
+    }
+
+    <link rel="stylesheet" href="~/css/top-alert.css" />
+</head>
+
+<body>
+    @{
+        var bp = Model as test.Cms12.Models.Pages.BasePage;
+        if (bp != null && bp.TopAlerts != null)
+        {
+            <partial name="~/Views/Shared/Partials/_TopAlerts.cshtml" model="bp" />
+        }
+    }
+
+    @RenderBody()
+
+    @if (Env.IsDevelopment())
+    {
+        @* React refresh preamble måste vara tillåten av script-src nonce *@
+        <script nonce="@nonce" type="module">
+                import RefreshRuntime from "https://localhost:5174/@@react-refresh";
+                RefreshRuntime.injectIntoGlobalHook(window);
+                window.$RefreshReg$ = () => { };
+                window.$RefreshSig$ = () => (type) => type;
+                window.__vite_plugin_react_preamble_installed__ = true;
+        </script>
+
+        <script type="module" src="https://localhost:5174/src/main.tsx"></script>
+    }
+    else if (!string.IsNullOrWhiteSpace(jsFile))
+    {
+        <script type="module" src="@($"/client/{jsFile}")"></script>
+    }
+
+    <script src="~/js/top-alert.js"></script>
+
+    @*
+    testa CSP utan nonce = ska blockeras
+    <div style="color:red">test</div>
+    <button onclick="alert(1)">test</button>
+    <script>alert(1)</script>
+    *@
+
+
+</body>
+
+</html>
