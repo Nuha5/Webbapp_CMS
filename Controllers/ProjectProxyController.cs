@@ -22,6 +22,8 @@ public class ProjectProxyController(
     public async Task<IActionResult> GetProjectsAsync() =>
         await ProxyAsync(() => _api.GetAsync("/api/projects"));
 
+    // proxy tar request från frontend
+    // anropar _api (TaskApiClient) som i sin tur anropar Task-API med rätt auth-header
     [HttpPost]
     public async Task<IActionResult> CreateProjectAsync([FromBody] object req) =>
         await ProxyAsync(() => _api.PostAsync("/api/projects", req));

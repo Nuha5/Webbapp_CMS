@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../Task-API"
+		}
+	],
+	"settings": {
+		"chat.tools.terminal.autoApprove": {
+			"dotnet run": true
+		}
+	}
+}

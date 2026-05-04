@@ -55,10 +55,10 @@
     {
         <meta name="description" content="@ViewData["Description"]" />
     }
-
+    @*CSRF token för formulär *@
     <meta name="csrf-token" content="@tokens.RequestToken" />
 
-    @* Viktigt för Vite CSP nonce-stöd *@
+    @* Viktigt för Vite CSP nonce-stöd, nonce för inline styles *@
     <meta property="csp-nonce" nonce="@nonce" />
 
     @* Tillåten via style-src 'nonce-...' *@
@@ -120,8 +120,8 @@
     <div style="color:red">test</div>
     <button onclick="alert(1)">test</button>
     <script>alert(1)</script>
-    *@
-
+*@
+    
 
 </body>
 

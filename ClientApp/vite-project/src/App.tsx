@@ -1,6 +1,5 @@
 import ProjectsPage from "./pages/ProjectsPage";
 import ProjectDashboardPage from "./pages/ProjectDashboardPage";
-import { TopAlerts } from "./components/TopAlerts";
 import { readMeta } from "./ui/meta";
 import { getProjectIdFromUrl, goToProjects } from "./ui/navigation";
 
@@ -15,12 +14,7 @@ export default function App() {
   const pageKind = normalizePageKind(readMeta("app-page", "projects"));
 
   if (pageKind === "projects") {
-    return (
-      <>
-        <TopAlerts />
-        <ProjectsPage />
-      </>
-    );
+    return <ProjectsPage />;
   }
 
   // dashboard
@@ -31,10 +25,5 @@ export default function App() {
     return null;
   }
 
-  return (
-    <>
-      <TopAlerts />
-      <ProjectDashboardPage projectId={projectId} />
-    </>
-  );
+  return <ProjectDashboardPage projectId={projectId} />;
 }

@@ -1,0 +1,2 @@
+2026-04-24 17:27:10.017 +02:00 [INF] Request starting HTTP/1.1 GET https://localhost:5000/hubs/projects - null null
+2026-04-24 17:27:10.059 +02:00 [INF] Executing endpoint '/hubs/projects'

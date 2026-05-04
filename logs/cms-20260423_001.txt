@@ -1,0 +1,133 @@
+2026-04-23 13:36:24.791 +02:00 [INF] User profile is available. Using 'C:\Users\Nuha\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-23 13:36:24.877 +02:00 [INF] Initialization started
+2026-04-23 13:36:25.275 +02:00 [WRN] Database connection is configured to allow MultipleActiveResultSets. Consider disable MultipleActiveResultSets for better performance.
+2026-04-23 13:36:25.282 +02:00 [INF] No event providers has been configured. Events will not be distributed to other servers.
+2026-04-23 13:36:25.491 +02:00 [INF] Adding module CMS
+2026-04-23 13:36:25.493 +02:00 [INF] Adding module Shell
+2026-04-23 13:36:25.494 +02:00 [INF] Adding module EPiServer.Cms.UI.VisitorGroups
+2026-04-23 13:36:25.495 +02:00 [INF] Adding module EPiServer.Cms.UI.Settings
+2026-04-23 13:36:25.496 +02:00 [INF] Adding module EPiServer.Cms.UI.Admin
+2026-04-23 13:36:25.497 +02:00 [INF] Adding module EPiServer.Cms.TinyMce
+2026-04-23 13:36:25.497 +02:00 [INF] Adding module App
+2026-04-23 13:36:25.532 +02:00 [INF] Resolving Json serializer for Module 'EPiServer.Cms.UI.VisitorGroups' with setting 'ModuleJsonSerializerType=Net' and 'PreferredUiJsonSerializerType=Net'
+2026-04-23 13:36:25.534 +02:00 [INF] Resolving Json serializer for Module 'EPiServer.Cms.UI.Settings' with setting 'ModuleJsonSerializerType=Net' and 'PreferredUiJsonSerializerType=Net'
+2026-04-23 13:36:25.535 +02:00 [INF] Resolving Json serializer for Module 'EPiServer.Cms.UI.Admin' with setting 'ModuleJsonSerializerType=None' and 'PreferredUiJsonSerializerType=Net'
+2026-04-23 13:36:25.536 +02:00 [INF] Resolving Json serializer for Module 'EPiServer.Cms.TinyMce' with setting 'ModuleJsonSerializerType=Resolve' and 'PreferredUiJsonSerializerType=Resolve'
+2026-04-23 13:36:25.538 +02:00 [INF] Resolved System.Text.Json serializer for Module 'EPiServer.Cms.TinyMce' according to global formatter
+2026-04-23 13:36:25.539 +02:00 [INF] Resolving Json serializer for Module 'App' with setting 'ModuleJsonSerializerType=Resolve' and 'PreferredUiJsonSerializerType=Resolve'
+2026-04-23 13:36:25.540 +02:00 [INF] Resolved System.Text.Json serializer for Module 'App' according to global formatter
+2026-04-23 13:36:25.542 +02:00 [INF] Resolved System.Text.Json as serializer for CMS UI
+2026-04-23 13:36:25.856 +02:00 [INF] Initialization completed
+2026-04-23 13:36:26.439 +02:00 [ERR] Hosting failed to start
+System.IO.IOException: Failed to bind to address https://127.0.0.1:5000: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+ ---> System.Net.Sockets.SocketException (10048): Only one usage of each socket address (protocol/network address/port) is normally permitted.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2026-04-23 13:36:41.670 +02:00 [INF] User profile is available. Using 'C:\Users\Nuha\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-23 13:36:41.747 +02:00 [INF] Initialization started
+2026-04-23 13:36:42.169 +02:00 [WRN] Database connection is configured to allow MultipleActiveResultSets. Consider disable MultipleActiveResultSets for better performance.
+2026-04-23 13:36:42.177 +02:00 [INF] No event providers has been configured. Events will not be distributed to other servers.
+2026-04-23 13:36:42.346 +02:00 [INF] Adding module CMS
+2026-04-23 13:36:42.348 +02:00 [INF] Adding module Shell
+2026-04-23 13:36:42.349 +02:00 [INF] Adding module EPiServer.Cms.UI.Admin
+2026-04-23 13:36:42.350 +02:00 [INF] Adding module EPiServer.Cms.UI.VisitorGroups
+2026-04-23 13:36:42.351 +02:00 [INF] Adding module EPiServer.Cms.TinyMce
+2026-04-23 13:36:42.352 +02:00 [INF] Adding module EPiServer.Cms.UI.Settings
+2026-04-23 13:36:42.353 +02:00 [INF] Adding module App
+2026-04-23 13:36:42.395 +02:00 [INF] Resolving Json serializer for Module 'EPiServer.Cms.UI.Admin' with setting 'ModuleJsonSerializerType=None' and 'PreferredUiJsonSerializerType=Net'
+2026-04-23 13:36:42.396 +02:00 [INF] Resolving Json serializer for Module 'EPiServer.Cms.UI.VisitorGroups' with setting 'ModuleJsonSerializerType=Net' and 'PreferredUiJsonSerializerType=Net'
+2026-04-23 13:36:42.398 +02:00 [INF] Resolving Json serializer for Module 'EPiServer.Cms.TinyMce' with setting 'ModuleJsonSerializerType=Resolve' and 'PreferredUiJsonSerializerType=Resolve'
+2026-04-23 13:36:42.400 +02:00 [INF] Resolved System.Text.Json serializer for Module 'EPiServer.Cms.TinyMce' according to global formatter
+2026-04-23 13:36:42.401 +02:00 [INF] Resolving Json serializer for Module 'EPiServer.Cms.UI.Settings' with setting 'ModuleJsonSerializerType=Net' and 'PreferredUiJsonSerializerType=Net'
+2026-04-23 13:36:42.402 +02:00 [INF] Resolving Json serializer for Module 'App' with setting 'ModuleJsonSerializerType=Resolve' and 'PreferredUiJsonSerializerType=Resolve'
+2026-04-23 13:36:42.403 +02:00 [INF] Resolved System.Text.Json serializer for Module 'App' according to global formatter
+2026-04-23 13:36:42.404 +02:00 [INF] Resolved System.Text.Json as serializer for CMS UI
+2026-04-23 13:36:42.756 +02:00 [INF] Initialization completed
+2026-04-23 13:36:43.179 +02:00 [INF] Now listening on: https://localhost:5000
+2026-04-23 13:36:43.182 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-23 13:36:43.185 +02:00 [INF] Hosting environment: Development
+2026-04-23 13:36:43.186 +02:00 [INF] Content root path: C:\Users\Nuha\Documents\optimizely
+2026-04-23 13:36:45.622 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5000/EPiServer/CMS/stores/notification/GetUnreadCount - null null
+2026-04-23 13:36:45.636 +02:00 [INF] First request initialization started for request 'https://localhost:5000/EPiServer/CMS/stores/notification/GetUnreadCount'
+2026-04-23 13:36:45.652 +02:00 [INF] First request initialization completed for request 'https://localhost:5000/EPiServer/CMS/stores/notification/GetUnreadCount'
+2026-04-23 13:36:45.723 +02:00 [INF] Executing endpoint 'EPiServer.Cms.Shell.UI.Rest.Notifications.NotificationStore.GetUnreadCount (EPiServer.Cms.Shell.UI)'
+2026-04-23 13:36:45.740 +02:00 [INF] Route matched with {area = "CMS", action = "GetUnreadCount", controller = "NotificationStore"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetUnreadCount() on controller EPiServer.Cms.Shell.UI.Rest.Notifications.NotificationStore (EPiServer.Cms.Shell.UI).
+2026-04-23 13:36:46.261 +02:00 [INF] Entity Framework Core 6.0.0 initialized 'ApplicationDbContext<ApplicationUser>' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.0' with options: None
+2026-04-23 13:36:46.446 +02:00 [INF] Executed DbCommand (13ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Comment], [a].[ConcurrencyStamp], [a].[CreationDate], [a].[Email], [a].[EmailConfirmed], [a].[IsApproved], [a].[IsLockedOut], [a].[LastLockoutDate], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2026-04-23 13:36:46.589 +02:00 [INF] Executed action EPiServer.Cms.Shell.UI.Rest.Notifications.NotificationStore.GetUnreadCount (EPiServer.Cms.Shell.UI) in 844.1333ms
+2026-04-23 13:36:46.591 +02:00 [INF] Executed endpoint 'EPiServer.Cms.Shell.UI.Rest.Notifications.NotificationStore.GetUnreadCount (EPiServer.Cms.Shell.UI)'
+2026-04-23 13:36:46.597 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5000/EPiServer/CMS/stores/notification/GetUnreadCount - 200 null application/json 975.1916ms
+2026-04-23 13:37:09.551 +02:00 [INF] Request starting HTTP/2 CONNECT https://localhost:5000/EPiServer/Shell/socket/endpoint/ - null null
+2026-04-23 13:37:09.608 +02:00 [INF] Executing endpoint '/EPiServer/Shell/socket/endpoint/'
+2026-04-23 13:37:45.559 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5000/EPiServer/CMS/stores/notification/GetUnreadCount - null null
+2026-04-23 13:37:45.575 +02:00 [INF] Executing endpoint 'EPiServer.Cms.Shell.UI.Rest.Notifications.NotificationStore.GetUnreadCount (EPiServer.Cms.Shell.UI)'
+2026-04-23 13:37:45.579 +02:00 [INF] Route matched with {area = "CMS", action = "GetUnreadCount", controller = "NotificationStore"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetUnreadCount() on controller EPiServer.Cms.Shell.UI.Rest.Notifications.NotificationStore (EPiServer.Cms.Shell.UI).
+2026-04-23 13:37:45.594 +02:00 [INF] Entity Framework Core 6.0.0 initialized 'ApplicationDbContext<ApplicationUser>' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.0' with options: None
+2026-04-23 13:37:45.607 +02:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Comment], [a].[ConcurrencyStamp], [a].[CreationDate], [a].[Email], [a].[EmailConfirmed], [a].[IsApproved], [a].[IsLockedOut], [a].[LastLockoutDate], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2026-04-23 13:37:45.627 +02:00 [INF] Executed action EPiServer.Cms.Shell.UI.Rest.Notifications.NotificationStore.GetUnreadCount (EPiServer.Cms.Shell.UI) in 45.9629ms
+2026-04-23 13:37:45.630 +02:00 [INF] Executed endpoint 'EPiServer.Cms.Shell.UI.Rest.Notifications.NotificationStore.GetUnreadCount (EPiServer.Cms.Shell.UI)'
+2026-04-23 13:37:45.633 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5000/EPiServer/CMS/stores/notification/GetUnreadCount - 200 null application/json 73.9074ms
+2026-04-23 13:38:11.475 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5000/EPiServer/CMS/stores/notification/GetUnreadCount - null null
+2026-04-23 13:38:11.485 +02:00 [INF] Executing endpoint 'EPiServer.Cms.Shell.UI.Rest.Notifications.NotificationStore.GetUnreadCount (EPiServer.Cms.Shell.UI)'
+2026-04-23 13:38:11.487 +02:00 [INF] Route matched with {area = "CMS", action = "GetUnreadCount", controller = "NotificationStore"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetUnreadCount() on controller EPiServer.Cms.Shell.UI.Rest.Notifications.NotificationStore (EPiServer.Cms.Shell.UI).
+2026-04-23 13:38:11.571 +02:00 [INF] Entity Framework Core 6.0.0 initialized 'ApplicationDbContext<ApplicationUser>' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.0' with options: None
+2026-04-23 13:38:11.583 +02:00 [INF] Executed DbCommand (8ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Comment], [a].[ConcurrencyStamp], [a].[CreationDate], [a].[Email], [a].[EmailConfirmed], [a].[IsApproved], [a].[IsLockedOut], [a].[LastLockoutDate], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2026-04-23 13:38:11.604 +02:00 [INF] Executed action EPiServer.Cms.Shell.UI.Rest.Notifications.NotificationStore.GetUnreadCount (EPiServer.Cms.Shell.UI) in 113.2619ms
+2026-04-23 13:38:11.606 +02:00 [INF] Executed endpoint 'EPiServer.Cms.Shell.UI.Rest.Notifications.NotificationStore.GetUnreadCount (EPiServer.Cms.Shell.UI)'
+2026-04-23 13:38:11.608 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5000/EPiServer/CMS/stores/notification/GetUnreadCount - 200 null application/json 132.5523ms
+2026-04-23 13:38:14.352 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5000/ - null null
+2026-04-23 13:38:14.645 +02:00 [INF] Entity Framework Core 6.0.0 initialized 'ApplicationDbContext<ApplicationUser>' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.0' with options: None
+2026-04-23 13:38:14.676 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[AccessFailedCount], [a].[Comment], [a].[ConcurrencyStamp], [a].[CreationDate], [a].[Email], [a].[EmailConfirmed], [a].[IsApproved], [a].[IsLockedOut], [a].[LastLockoutDate], [a].[LastLoginDate], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+ORDER BY [a].[UserName]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-04-23 13:38:14.682 +02:00 [INF] The admin user registration is disabled, no redirect to '/Util/Register' will happen.
+2026-04-23 13:38:14.906 +02:00 [INF] Executing endpoint 'test.Cms12.Controllers.ProjectsPageController.Index (test.Cms12)'
+2026-04-23 13:38:14.916 +02:00 [INF] Route matched with {action = "Index", controller = "ProjectsPage"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index(test.Cms12.Models.Pages.ProjectsPage) on controller test.Cms12.Controllers.ProjectsPageController (test.Cms12).
+2026-04-23 13:38:14.932 +02:00 [INF] Executing ViewResult, running view Index.
+2026-04-23 13:38:15.247 +02:00 [INF] Executed ViewResult - view Index executed in 317.5707ms.
+2026-04-23 13:38:15.249 +02:00 [INF] Executed action test.Cms12.Controllers.ProjectsPageController.Index (test.Cms12) in 330.5488ms
+2026-04-23 13:38:15.251 +02:00 [INF] Executed endpoint 'test.Cms12.Controllers.ProjectsPageController.Index (test.Cms12)'
+2026-04-23 13:38:15.255 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5000/ - 200 null text/html; charset=utf-8 902.3737ms
+2026-04-23 13:38:15.429 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5000/dashboard-api/projects - null null
+2026-04-23 13:38:15.447 +02:00 [INF] Executing endpoint 'test.Cms12.Controllers.ProjectProxyController.GetProjectsAsync (test.Cms12)'
+2026-04-23 13:38:15.454 +02:00 [INF] Route matched with {action = "GetProjects", controller = "ProjectProxy"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProjectsAsync() on controller test.Cms12.Controllers.ProjectProxyController (test.Cms12).
+2026-04-23 13:38:15.832 +02:00 [INF] Start processing HTTP request GET https://localhost:7296/api/projects
+2026-04-23 13:38:15.837 +02:00 [INF] Sending HTTP request GET https://localhost:7296/api/projects
+2026-04-23 13:38:15.921 +02:00 [INF] Received HTTP response headers after 78.7649ms - 200
+2026-04-23 13:38:15.924 +02:00 [INF] End processing HTTP request after 95.3125ms - 200
+2026-04-23 13:38:15.934 +02:00 [INF] Executing ContentResult with HTTP Response ContentType of application/json; charset=utf-8
+2026-04-23 13:38:15.935 +02:00 [INF] Executed action test.Cms12.Controllers.ProjectProxyController.GetProjectsAsync (test.Cms12) in 477.8458ms
+2026-04-23 13:38:15.937 +02:00 [INF] Executed endpoint 'test.Cms12.Controllers.ProjectProxyController.GetProjectsAsync (test.Cms12)'
+2026-04-23 13:38:15.938 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5000/dashboard-api/projects - 200 716 application/json; charset=utf-8 509.2143ms
