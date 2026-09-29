@@ -1,3 +1,6 @@
+![Dashboard 1](image/dashboard.png)
+![Dashboard 2](image/dashboard2.png)
+
 # Secure Project Management Dashboard
 
 A secure project and task management platform built with Optimizely CMS, ASP.NET Core, React and a separate .NET REST API.
