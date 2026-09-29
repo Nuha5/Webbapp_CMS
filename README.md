@@ -1,5 +1,7 @@
-![Dashboard 1](image/Skärmavbild 2026-09-29 kl. 11.13.45.png)
-![Dashboard 2](image/Skärmavbild 2026-09-29 kl. 11.15.39.png)
+<p align="center">
+  <img src="image/dashboard-1.png" alt="Dashboard 1" width="380" />
+  <img src="image/dashboard-2.png" alt="Dashboard 2" width="380" />
+</p>
 
 # Secure Project Management Dashboard
 
